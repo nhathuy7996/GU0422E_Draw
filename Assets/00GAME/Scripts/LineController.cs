@@ -29,6 +29,7 @@ public class LineController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             _rigi.simulated = false;
             _rigi.velocity = Vector3.zero;
+            
             this.transform.position = Vector3.zero;
             this.transform.rotation = new Quaternion();
             _collider.Reset();
@@ -52,8 +53,6 @@ public class LineController : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) {
             _collider.SetPoints(_listPos);
             _rigi.simulated = true;
-
-            GameController.Instant.Player.starGame();
         }
         
     }

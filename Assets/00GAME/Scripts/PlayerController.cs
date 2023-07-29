@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
         _rigi = this.GetComponent<Rigidbody2D>();
         _colli = this.GetComponent<Collider2D>();
 
+        Observer.Instant.AddListener(Observer.GAME_START, starGame);
+
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void starGame() {
+    public void starGame(object data) {
         _rigi.simulated = true;
         _colli.enabled = true;
     }
