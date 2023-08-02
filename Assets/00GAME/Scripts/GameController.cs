@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using HuynnLib;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
-    private static GameController _instant;
-    public static GameController Instant => _instant;
+    
 
     [SerializeField] PlayerController _player;
     public PlayerController Player => _player;
 
-    private void Awake()
-    {
-        _instant = this;
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            SceneManager.LoadScene(0);
+        }
     }
 }

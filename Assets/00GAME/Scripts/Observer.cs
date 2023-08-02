@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using HuynnLib;
 
-public class Observer : MonoBehaviour
+public class Observer : Singleton<Observer>
 {
     #region KEYS
     public static string GAME_START = "GameStart";
     #endregion
 
-    private static Observer _instant;
-    public static Observer Instant => _instant;
-
-    Dictionary<string, List<Action<object>>> _listActions = new Dictionary<string, List<Action<object>>>();
     
+    Dictionary<string, List<Action<object>>> _listActions = new Dictionary<string, List<Action<object>>>();
 
-    private void Awake()
+
+    private void Start()
     {
-        _instant = this;
+        DontDestroyOnLoad(this);
     }
+
 
 
     public void AddListener(string key, Action<object> callBack) {
