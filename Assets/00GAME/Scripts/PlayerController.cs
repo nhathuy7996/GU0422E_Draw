@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        Observer.Instant.RemoveListener(Observer.GAME_START, starGame);
+    }
+
     // Update is called once per frame
     void Update()
     {

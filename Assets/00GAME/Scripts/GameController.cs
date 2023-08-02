@@ -9,7 +9,15 @@ public class GameController : Singleton<GameController>
     
 
     [SerializeField] PlayerController _player;
-    public PlayerController Player => _player;
+    public PlayerController Player {
+
+        get {
+            if (_player == null)
+                _player = FindObjectOfType<PlayerController>();
+
+            return _player;
+        }
+    }
 
     
     // Start is called before the first frame update

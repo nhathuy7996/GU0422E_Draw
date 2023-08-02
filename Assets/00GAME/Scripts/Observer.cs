@@ -44,4 +44,12 @@ public class Observer : Singleton<Observer>
         }
        
     }
+
+    public void RemoveListener(string key, Action<object> callBack) {
+
+        if (!_listActions.ContainsKey(key))
+            return;
+
+        _listActions[key].Remove(callBack); 
+    }
 }

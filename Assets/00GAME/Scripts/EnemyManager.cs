@@ -13,6 +13,11 @@ public class EnemyManager : MonoBehaviour
         Observer.Instant.AddListener(Observer.GAME_START, SpawEnemy);
     }
 
+    private void OnDestroy()
+    {
+        Observer.Instant.RemoveListener(Observer.GAME_START, SpawEnemy);
+    }
+
     // Update is called once per frame
     void Update()
     {

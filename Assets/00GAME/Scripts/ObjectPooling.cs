@@ -13,7 +13,7 @@ public class ObjectPooling : Singleton<ObjectPooling>
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+        
     }
 
     // Update is called once per frame
@@ -30,6 +30,10 @@ public class ObjectPooling : Singleton<ObjectPooling>
             _pools.Add(objKey,pool);
 
         foreach (GameObject g in pool) {
+            if(g == null) {
+                
+                continue;
+            }
             if (g.activeSelf)
                 continue;
 
