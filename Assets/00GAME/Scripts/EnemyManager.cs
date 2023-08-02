@@ -32,6 +32,7 @@ public class EnemyManager : MonoBehaviour
             
             GameObject e = ObjectPooling.Instant.getObj(_prefabEnemy);
             e.transform.position = pos;
+            e.transform.SetParent(this.transform);
             e.SetActive(true);
         }
     }

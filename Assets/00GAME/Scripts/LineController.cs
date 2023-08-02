@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(EdgeCollider2D))]
-public class LineController : MonoBehaviour
+public class LineController : HuynnLib.Singleton<LineController>
 {
     LineRenderer _line;
 
@@ -14,6 +14,13 @@ public class LineController : MonoBehaviour
     Rigidbody2D _rigi;
 
     List<Vector2> _listPos = new List<Vector2>();
+
+
+    public void Init() {
+
+        _line.positionCount = 0;
+    }
+
 
     void Start()
     {

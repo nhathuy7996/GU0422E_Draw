@@ -22,6 +22,10 @@ public class GameController : Singleton<GameController>
     [SerializeField]
     float _timer = 0;
 
+    [SerializeField] List<GameObject> _levelList = new List<GameObject>();
+    int _currentLevel = -1;
+    GameObject _oldLevel;
+
     GAMESTATE _gameState = GAMESTATE.Init;
 
     public GAMESTATE GameState => _gameState;
@@ -32,8 +36,16 @@ public class GameController : Singleton<GameController>
     }
 
     void InitLevel(object data) {
+        _currentLevel++;
         _gameState = GAMESTATE.Init;
         _timer = 0;
+
+        if (_oldLevel != null)
+            Destroy(_oldLevel);
+
+        _oldLevel = Instantiate(_levelList[_currentLevel]);
+
+        LineController.Instant.Init();
     }
     
     // Start is called before the first frame update
@@ -61,7 +73,7 @@ public class GameController : Singleton<GameController>
         }
         if (Input.GetKeyDown(KeyCode.Space)) {
             Observer.Instant.Notify(Observer.INIT_LEVEL);
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
     }
 
