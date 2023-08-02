@@ -25,7 +25,8 @@ public class LineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (GameController.Instant.GameState != GameController.GAMESTATE.Init)
+            return;
         if (Input.GetMouseButtonDown(0)) {
             _rigi.simulated = false;
             _rigi.velocity = Vector3.zero;

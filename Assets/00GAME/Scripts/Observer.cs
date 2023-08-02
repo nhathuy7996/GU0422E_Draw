@@ -8,9 +8,10 @@ public class Observer : Singleton<Observer>
 {
     #region KEYS
     public static string GAME_START = "GameStart";
+    public static string INIT_LEVEL = "InitLevel";
     #endregion
 
-    
+
     Dictionary<string, List<Action<object>>> _listActions = new Dictionary<string, List<Action<object>>>();
 
 
